@@ -1,18 +1,30 @@
 package aibg;
 
 import actions.Action;
+import actions.JoinGame;
 import actions.MakeGame;
 import actions.Move;
 import dto.GameState;
 import dto.Player;
 import game.MiniMax;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 		int playerId = 491355, playerId2 = 491356;
+		int gameId = 0;
+		try {
+			gameId = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-		GameState game = Api.playAction(new MakeGame(), playerId, 0);
+		//GameState game = Api.playAction(new MakeGame(), playerId, 0);
+		GameState game = Api.playAction(new JoinGame(), playerId, gameId);
 		System.out.println(game.gameId);
 		System.out.println(game.player1.teamName);
 		int expectedLastX = 0, expectedLastY = 0;

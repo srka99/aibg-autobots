@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Api {
-    private static final String URL = "https://aibg2021.herokuapp.com/train/";
+    private static final String URL = "https://aibg2021.herokuapp.com/";
 
     private static GameState parseResponse(String response) {
         return new Gson().fromJson(response, GameState.class);
@@ -50,6 +50,9 @@ public class Api {
             path = "botVSbot";
             params = "&player1Id=" + a.playerId1 + "&player2Id=" + a.playerId2;
         }*/
+        else if (action instanceof JoinGame) {
+            path = "joinGame";
+        }
         return URL + path + "?playerId=" + playerId + "&gameId=" + gameId + params;
     }
 

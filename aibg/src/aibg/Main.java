@@ -31,7 +31,7 @@ public class Main {
 		while (!game.finished) {
 			Worker w = new Worker(game);
 			w.start();
-			Thread.sleep(4500);
+			Thread.sleep(1000);
 			w.interrupt();
 			w.join();
 			Player currentPlayer = (game.player1.teamName.equals("autobots")) ? game.player1 : game.player2;

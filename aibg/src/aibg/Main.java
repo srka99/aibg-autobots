@@ -10,7 +10,7 @@ import game.MiniMax;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		int playerId = 491355;
+		int playerId = 491355, playerId2 = 491356;
 
 		GameState game = Api.playAction(new MakeGame(), playerId, 0);
 		System.out.println(game.gameId);
@@ -19,7 +19,7 @@ public class Main {
 		while (!game.finished) {
 			Worker w = new Worker(game);
 			w.start();
-			Thread.sleep(450);
+			Thread.sleep(4500);
 			w.interrupt();
 			w.join();
 			Player currentPlayer = (game.player1.teamName.equals("autobots")) ? game.player1 : game.player2;

@@ -99,7 +99,7 @@ public class GameState implements Serializable, Cloneable{
 		}
 		Player currentPlayer = (isMaxPlayer ^ player1.teamName.equals("autobots")) ? player2 : player1;
 		Player otherPlayer = (isMaxPlayer ^ player1.teamName.equals("autobots")) ? player1 : player2;
-		if (action instanceof FreeASpot) {
+		/*if (action instanceof FreeASpot) {
 			FreeASpot a = (FreeASpot) action;
 			if (!currentPlayer.hasFreeASpot || isStuck(currentPlayer, otherPlayer) || map.tiles[a.x][a.y].ownedByTeam.equals("") || currentPlayer.energy < (3*(1+ currentPlayer.numberOfUsedFreeASpot))) {
 				return false;
@@ -112,7 +112,7 @@ public class GameState implements Serializable, Cloneable{
 			otherPlayer.score -= map.tiles[a.x][a.y].ownedByTeam.equals(currentPlayer.teamName) ? 0 : 100;
 			map.tiles[a.x][a.y].ownedByTeam = "";
 			return true;
-		}
+		}*/
 		if (action instanceof Move) {
 			Move a = (Move) action;
 			if (currentPlayer.energy < a.distance || isStuck(currentPlayer, otherPlayer)) {

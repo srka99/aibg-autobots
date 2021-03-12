@@ -65,8 +65,8 @@ public class MiniMax {
 	private int calculateScore(GameState gameState) {
 		int score1, score2;
 
-		score1 = gameState.player1.score + gameState.player1.energy*100 + ((gameState.player1.hasFreeASpot && gameState.player1.numberOfUsedFreeASpot == 0) ? 500 : 0);
-		score2 = gameState.player2.score + gameState.player2.energy*100 + ((gameState.player2.hasFreeASpot && gameState.player2.numberOfUsedFreeASpot == 0) ? 500 : 0);
+		score1 = gameState.player1.score + gameState.player1.energy*100 + ((gameState.player1.hasFreeASpot && gameState.player1.numberOfUsedFreeASpot == 0) ? 700 : 0);
+		score2 = gameState.player2.score + gameState.player2.energy*100 + ((gameState.player2.hasFreeASpot && gameState.player2.numberOfUsedFreeASpot == 0) ? 700 : 0);
 
 		if(!gameState.player1.teamName.equals("autobots")) {
 			int temp = score1;
@@ -78,11 +78,11 @@ public class MiniMax {
 	}
 
 	private void addActions() {
-		for (int i = 0; i <= 26; i++) {
+		/*for (int i = 0; i <= 26; i++) {
 			for (int j = 0; j <= 8; j++) {
 				actions.add(new FreeASpot(i, j));
 			}
-		}
+		}*/
 		for (int i = 0; i < 6; i++) {
 			for (int j = 1; j <= 5; j++) {
 				actions.add(new Move("qweasd".charAt(i), j));

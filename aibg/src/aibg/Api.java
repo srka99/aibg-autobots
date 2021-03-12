@@ -45,6 +45,11 @@ public class Api {
         else if (action instanceof MakeGame) {
             path = "makeGame";
         }
+        else if (action instanceof BotVsBot) {
+            BotVsBot a = (BotVsBot) action;
+            path = "botVSbot";
+            params = "&player1Id=" + a.playerId1 + "&player2Id=" + a.playerId2;
+        }
         return URL + path + "?playerId=" + playerId + "&gameId=" + gameId + params;
     }
 

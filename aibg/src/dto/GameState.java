@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.*;
-import org.apache.commons.lang3.SerializationUtils;
 
 public class GameState implements Serializable, Cloneable{
 	public int gameId;
@@ -18,10 +17,27 @@ public class GameState implements Serializable, Cloneable{
 	public int numOfMove;
 	public String winnerTeamName;
 	public boolean finished;
-	
+
+	public GameState(int gameId, Player player1, Player player2, int currentPlayer, Map map, int numberOfFreeSpots, Object[] player1ChangedTiles, Object[] player2ChangedTiles, int numOfMove, String winnerTeamName, boolean finished) {
+		this.gameId = gameId;
+		this.player1 = player1;
+		this.player2 = player2;
+		this.currentPlayer = currentPlayer;
+		this.map = map;
+		this.numberOfFreeSpots = numberOfFreeSpots;
+		this.player1ChangedTiles = player1ChangedTiles;
+		this.player2ChangedTiles = player2ChangedTiles;
+		this.numOfMove = numOfMove;
+		this.winnerTeamName = winnerTeamName;
+		this.finished = finished;
+	}
+
+	public GameState() {
+	}
+
 	@Override
 	public GameState clone() {
-		return SerializationUtils.clone(this);
+		return new GameState(gameId, player1.clone(), player2.clone(), currentPlayer, map.clone(), numberOfFreeSpots, player1ChangedTiles, player2ChangedTiles, numOfMove, winnerTeamName, finished);
 	}
 
 	private int moveX(char c, int x) {
